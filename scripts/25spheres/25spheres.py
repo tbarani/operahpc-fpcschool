@@ -39,7 +39,7 @@ mi.setMatrixPhase(1)
 
 meshGenerator = merope.mesh.MeshGenerator()
 meshGenerator.setMeshOrder(2)
-meshGenerator.setMeshSize(0.3)
+meshGenerator.setMeshSize(0.15)
 meshGenerator.setMultiInclusions(mi)
 meshGenerator.do_not_mesh(tab_phase_not_to_mesh)
 test_name=str(dimensions_side)+"um_"+str(pore_fraction*100).split(".")[0]+"_pct"
