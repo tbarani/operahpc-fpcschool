@@ -2,8 +2,20 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os, sys
 
+############# PARAMETERS YOU CAN MODIFY TO SUITE YOUR CASES#########################
+
 results_file_name = 'bubbles_and_stresses_selected.txt'
 file_bubbles = os.path.join(os.getcwd(), results_file_name)
+
+# Set hydrostatic pressure
+p_hydro = 0.16  # Set to your actual hydrostatic pressure if known
+
+# Set the bubble pressure
+pint = 1
+
+############# END OF THE PARAMETERS YOU CAN MODIFY       #########################
+
+
 
 # Read the bubble data file
 with open(file_bubbles, 'r') as f:
@@ -25,9 +37,6 @@ if 'Stress' not in header:
 print(f"Loaded {len(data)} bubbles")
 print(f"Columns: {header}")
 
-# Set hydrostatic pressure (you can adjust this value)
-p_hydro = 0.16  # Set to your actual hydrostatic pressure if known
-
 # Add p_hydro to 'Stress' column
 for row in data:
     row[header.index('Stress')] += p_hydro
@@ -36,7 +45,7 @@ for row in data:
 data.sort(key=lambda x: x[header.index('Stress')], reverse=True)
 
 # Calculate reciprocal_stress and cdf
-reciprocal_stress = np.array([(1-p_hydro) / row[header.index('Stress')] for row in data])
+reciprocal_stress = np.array([(pint-p_hydro) / row[header.index('Stress')] for row in data])
 cdf = np.arange(1, len(reciprocal_stress)+1) / len(reciprocal_stress)
 
 # Save sorted data to a text file
@@ -81,9 +90,9 @@ ax1.set_title('Normalized Stress Distribution')
 # Plot 2: Bubble pressure vs FGR
 ax2.plot(bubble_pressure, fgr_percent, '-o', markersize=4, label='Simulation')
 # Mark the 10% FGR point
-ax2.plot(pressure_at_10, fgr_at_10, 'r*', markersize=15, label=f'~10% FGR', zorder=5)
-ax2.axhline(y=10, color='r', linestyle='--', alpha=0.5, linewidth=1)
-ax2.axvline(x=pressure_at_10, color='r', linestyle='--', alpha=0.5, linewidth=1)
+ax2.plot(pressure_at_10, fgr_at_10, 'b*', markersize=15, label=f'~10% FGR', zorder=5)
+ax2.axhline(y=10, color='b', linestyle='--', alpha=0.5, linewidth=1)
+ax2.axvline(x=pressure_at_10, color='b', linestyle='--', alpha=0.5, linewidth=1)
 ax2.set_xlabel('Bubble pressure, Pa', fontsize=14)
 ax2.set_ylabel('FGR, %', fontsize=14)
 ax2.set_xlim(0, 4e8)
