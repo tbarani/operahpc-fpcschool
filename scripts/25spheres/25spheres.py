@@ -12,7 +12,7 @@ L = [dimensions_side, dimensions_side, dimensions_side]
 # set the pores features
 radius = 0.5  # µm
 pore_fraction = 0.10  # /
-distMin = 0.300 # minimal distance between two seeds in the RSA algorithm
+distMin = 0.150 # minimal distance between two seeds in the RSA algorithm
 
 # you can change this to modify the random placement of the seeds
 randomSeed = 1
