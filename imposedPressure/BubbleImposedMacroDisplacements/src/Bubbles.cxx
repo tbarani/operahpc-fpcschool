@@ -155,11 +155,11 @@ struct PhysicalParameters {
  * numerical parameters, and output options
  */
 struct TestParameters : PhysicalParameters {
-  const char* mesh_file = "mesh/single_sphere.msh";  ///< Path to mesh file
+  const char* mesh_file = "./mesh.msh";  ///< Path to mesh file
   const char* behaviour = "Elasticity";              ///< Material behavior law
   const char* library = "src/libBehaviour.so";       ///< Material library path
   const char* bubble_file =
-      "mesh/single_bubble.txt";                  ///< Bubble definitions file
+      "./bubble.txt";                  ///< Bubble definitions file
   const char* testcase_name = "TestCaseBubble";  ///< Name for output files
   int parallel_mesh = 0;    ///< Flag for parallel mesh format
   int order = 2;            ///< Finite element order
