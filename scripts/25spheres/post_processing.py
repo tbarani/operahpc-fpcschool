@@ -8,10 +8,10 @@ results_file_name = 'bubbles_and_stresses_selected.txt'
 file_bubbles = os.path.join(os.getcwd(), results_file_name)
 
 # Set hydrostatic pressure
-p_hydro = 0.16  # Set to your actual hydrostatic pressure if known
+p_hydro = 1.48463e+07  # Set to your actual hydrostatic pressure if known
 
 # Set the bubble pressure
-pint = 1
+pint = 1e8
 
 ############# END OF THE PARAMETERS YOU CAN MODIFY       #########################
 

@@ -4,15 +4,15 @@ import merope
 #NB merope is dimensioneless in principle, 
 # but we choose to refer everything w.r.t. 
 # µmeters for numerical precision 
-dimensions_side:int = 5  # µm
+dimensions_side:int = 8  # µm
 
 # create the box for the RVE
 L = [dimensions_side, dimensions_side, dimensions_side]
 
 # set the pores features
-radius = 0.5  # µm
-pore_fraction = 0.10  # /
-distMin = 0.150 # minimal distance between two seeds in the RSA algorithm
+radius = 0.85  # µm
+pore_fraction = 0.11  # /
+distMin = 0.3 # minimal distance between two seeds in the RSA algorithm
 
 # you can change this to modify the random placement of the seeds
 randomSeed = 1
@@ -53,7 +53,7 @@ mi.setMatrixPhase(1) #label the physical volume as 1 in the mesh, useful for gms
 # mesh options and features
 meshGenerator = merope.mesh.MeshGenerator()
 meshGenerator.setMeshOrder(2)
-meshGenerator.setMeshSize(0.15)
+meshGenerator.setMeshSize(0.25)
 meshGenerator.setMultiInclusions(mi)
 #crucial! in out case, the pores aren't meshed, we need to tell it to merope
 meshGenerator.do_not_mesh(tab_phase_not_to_mesh)
